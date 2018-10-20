@@ -1,0 +1,16 @@
+Notas Git
+
+git checkout master
+git pull // verfifica se existe atualização
+
+se sim:
+    git checkout desenvolvimento
+    git rebase master desenvolvimento // atualiza a branch de desenvolvimento, deixa o log mais limpo
+
+    Se existe conflito no rebase:
+        - resolver o conflito
+        - git add arquivo_com_conflito
+        - git rebase --continue // Para continuar o rebase
+
+git checkout master
+git merge desenvolvimento // traz as alteraçõe de desenvolvimento para master
