@@ -3,3 +3,5 @@ Iniciando arquivo.
 Editando o arquivo. Inserindo nova linha.
 
 Ei! Quero que fique a minha linha carinha ;)
+
+Bem, agora vamos testa o rebase. :)
