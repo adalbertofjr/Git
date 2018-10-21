@@ -49,5 +49,30 @@ Atualizando a master:
 
 Controle de alterações:
     git checkout //desfaz as alterações
-    git reset HEAD [nome_do_arquivo] //redefini o arquivo que esta no index de acordo com a versão que está no HEAD
+    git checkout -- design // -- indica que os nomes posteriores ao hífens são referentes a arquivos
+    git reset HEAD [nome_do_arquivo] //remove o arquivo que esta no index e move para working directory
+    git reset HEAD~1 //faz referência ao penúltimo commit e assim por diante, basta mudar o número do commit que deseja remover as alterações
+    git reset --hard //as alterações são removidas do histórico local de commits e também tanto do index quanto do working directory, permanentemente.
+    git reset --soft //as alterações são removidas do histórico local de commits, mas não são removidas do index.
+    git reset //alterações são removidas do histórico local de commits, do index, mas não do working directory`.
     git stash //adiciona arquivos alterados que estão na working directory ou index ao stash para ser recuperado depois
+    git stash list //lista todas alterações adicionados ao stash
+    git stash pop  //recupera as alterações do primeiro item da pilha e deleta da pilha
+    git stash apply stash@{1} //recupera as alterações de acordo com o indice e não deleta da pilha
+    git stash drop //apaga alterações(estados) dá area de stash
+    git stash clear //limpa todos estados
+    git stash drop stash@{1} //limpa estado indicado pela referência
+    git reset b6c7cc8e3fea9b255b5845e1114588206679f609 //commit será descartado, redirecionando HEAD para comit anterior ao hash apontado
+    git revert -n [hash_do_commit] //desfaz as alterações do commit realizado, -n -> alterações revertidas para que possam ser adicionadas ao working directory e ao index
+
+Buscando por bugs em muitos commits
+    *Você indica dois pontos da branch, um com o bug e outro ponto sem, o git então busca entre estes dois pontos um commit e você precisa indicar se ele é bom ou ruim, até achar o commit que ocorreu o bug
+
+    git bisect start //inicia a busca pelo bug entre commits
+    git bisect bad HEAD //indica um commit contém o bug que estamos tentando resolver
+    git bisect good 02bfc44 //indica um commit que não possui o bug, que está ok
+    git bisect bad //indica um commit ruim
+    git bisect good //indica um commit bom
+
+    *Para corrigir o erro, conhecemos o hash do commit e podemos utilizar os comandos git reset, git revert ou ver as alterações realizadas naquele commit específico com git show bbd43c6
+
