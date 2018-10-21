@@ -11,7 +11,7 @@ git branch -d [nome nome_da_branch] //apaga branch
 git checkout -b [nome_da_branch] //cria a branch e muda para branch criada
 git checkout [nome_da_branch] //muda de branch 
 
-git add [nome_do_arquivo] //adiciona arquivo para área de observação(index/stash)
+git add [nome_do_arquivo] //adiciona arquivo para área de observação(index/staging
 git add [nome_do_arquivo] [nome_do_arquivo] //para adicionar mais de um arquivo
 git add -a //para adicionar todos arquivos, menos os novos arquivos
 git add . //adicionar todos arquivo para área de observação
@@ -20,28 +20,34 @@ git commit -m 'descrição da atividade' // para commit
 git commit // para commitar e abrir terminal para entrada de descrição
 
 Enviando alterações:
-git push origin master //envia as atualizações para o repositório
+    git push origin master //envia as atualizações para o repositório
 
 Merge:
-git checkout master
-git merge desenvolvimento //traz as alterações da branch de desenvolvimento para a branch master
+    git checkout master
+    git merge desenvolvimento //traz as alterações da branch de desenvolvimento para a branch master
 
 Atualizando repositório local:
-git fetch //atualiza as referências remotas
-git pull //atualiza os dados remotos(git fetch) e seguida realiza o merge do branch remoto correspondente
+    git fetch //atualiza as referências remotas
+    git pull //atualiza os dados remotos(git fetch) e seguida realiza o merge do branch remoto correspondente
 
 Ciclo para manter branch atualizada:
-git checkout master
-git pull //verfifica se existe atualização
-se sim:
-    git checkout desenvolvimento
-    git rebase master desenvolvimento //atualiza a branch de desenvolvimento, deixa o log mais limpo
+    git checkout master
+    git pull //verfifica se existe atualização
+    se sim:
+        git checkout desenvolvimento
+        git rebase master desenvolvimento //atualiza a branch de desenvolvimento, deixa o log mais limpo
 
-    Se existe conflito no rebase:
-        - resolver o conflito
-        - git add arquivo_com_conflito
-        - git rebase --continue //para continuar o rebase
+        Se existe conflito no rebase:
+            - resolver o conflito
+            - git add arquivo_com_conflito
+            - git rebase --continue //para continuar o rebase
 
 Atualizando a master:
-git checkout master
-git merge desenvolvimento //traz as alterações de desenvolvimento para master
+    git checkout master
+    git merge desenvolvimento //traz as alterações de desenvolvimento para master
+
+
+Controle de alterações:
+    git checkout //desfaz as alterações
+    git reset HEAD [nome_do_arquivo] //redefini o arquivo que esta no index de acordo com a versão que está no HEAD
+    git stash //adiciona arquivos alterados que estão na working directory ou index ao stash para ser recuperado depois
