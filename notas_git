@@ -76,3 +76,39 @@ Buscando por bugs em muitos commits
 
     *Para corrigir o erro, conhecemos o hash do commit e podemos utilizar os comandos git reset, git revert ou ver as alterações realizadas naquele commit específico com git show bbd43c6
 
+Técninas de produtividade
+    Redução de comando com o alias:
+        No arquivo .gitconfig
+        vim ~/.gitconfig
+        Adicionar:
+            [alias]
+                st = status
+                ci = commit
+                envia = !git checkout master && git pull && git checkout desenvolvimento && git rebase master && git checkout master && git merge desenvolvimento && git push //! -> indica que comandos serão enviados ao bash
+
+    Cores:    
+        [color]
+            diff = auto
+
+    Log:
+        git log -p //mostra alterações feitas
+        git log --stat //resumo com quantidade de alterações
+        git log --pretty=[oneline|oneline|short|medium|full|fuller|email|raw] //defini a quantidade de informaçoes exibidas
+        git log --pretty='%an realizou commit em %ad: %s' //defini um formato para o log onde %an - autor, %ad - data e hora, %s - mensagem, %h - hash
+        git log --pretty='%an realizou commit em %ad: %s' --graph //mostra um gráfico com as brachs
+
+    
+Contribuindo para projetos de outras pessoas:
+    fork : copia do projeto
+        Fazer alterações, adicionar, commitar.
+        Para fazer pull, adicionar endereco remoto do projeto com o git remote add origin_do_projeto https://github.com/...
+        Fazer pull request e aguardar a aprovação do dono do projeto
+    
+    watch:
+        watch no Github, seguir projetos sem copia-lo
+
+Fazendo merges avançados com Cherry Pick:
+    *Problemas de merge gerados pelo cherry-pick são resolvidos de maneira semelhante ao git merge e git rebase
+        git cherry-pick 19f0bb7d8b4be8ecd687b48fca301b71b95eab41 //apenas o commit selecionado seja aplicados na outra branch
+        git cherry-pick -n 19f0bb7d8b4be8ecd687b48fca301b71b95eab41 //não copia o commit, alterações serão adicionados ao index
+        git cherry-pick abcd..1234 //para pegar todos os commits dentro de um intervalo
