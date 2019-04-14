@@ -112,3 +112,12 @@ Fazendo merges avançados com Cherry Pick:
         git cherry-pick 19f0bb7d8b4be8ecd687b48fca301b71b95eab41 //apenas o commit selecionado seja aplicados na outra branch
         git cherry-pick -n 19f0bb7d8b4be8ecd687b48fca301b71b95eab41 //não copia o commit, alterações serão adicionados ao index
         git cherry-pick abcd..1234 //para pegar todos os commits dentro de um intervalo
+        
+Untrack files:
+    git update-index should do what you want
+
+    This will tell git you want to start ignoring the changes to the file
+    git update-index --assume-unchanged path/to/file
+
+    When you want to start keeping track again
+    git update-index --no-assume-unchanged path/to/file
